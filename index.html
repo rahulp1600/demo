@@ -7,7 +7,27 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="terminal-container">
+    <!-- LOGIN PAGE -->
+    <div class="login-container" id="loginPage">
+        <div class="login-title">🔧 CODE DEBUG CHALLENGE</div>
+        <div class="login-subtitle">JNTUH College Fest 2026</div>
+        
+        <div class="input-group">
+            <label>Team ID</label>
+            <input type="text" id="teamId" placeholder="TEAM001" maxlength="10">
+        </div>
+        
+        <div class="input-group">
+            <label>College Reg No</label>
+            <input type="text" id="regNo" placeholder="21A31A05XX" maxlength="12">
+        </div>
+        
+        <button class="login-btn" onclick="login()">🚀 ENTER COMPETITION</button>
+        <div class="demo-mode" onclick="demoLogin()">👾 DEMO MODE</div>
+    </div>
+
+    <!-- TERMINAL -->
+    <div class="terminal-container" id="terminalPage">
         <div class="editor-panel">
             <div class="panel-header">
                 <div class="lang-selector">
@@ -16,8 +36,9 @@
                     <button class="lang-btn" data-lang="java">☕ Java</button>
                 </div>
                 <div class="header-info">
-                    <span class="status" id="lineCount">15 lines</span>
-                    <span class="status" id="langStatus">Python</span>
+                    <span class="status" id="lineCount">10 lines</span>
+                    <span class="status" id="langStatus">PYTHON</span>
+                    <span class="status" id="userInfo"></span>
                 </div>
             </div>
             <div class="editor-container">
@@ -39,6 +60,7 @@
             </div>
         </div>
     </div>
+
     <script src="script.js"></script>
 </body>
 </html>

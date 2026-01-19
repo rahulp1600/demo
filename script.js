@@ -1,4 +1,3 @@
-// DOM Elements
 const codeEditor = document.getElementById('codeEditor');
 const consoleOutput = document.getElementById('consoleOutput');
 const status = document.getElementById('status');
@@ -9,8 +8,8 @@ const runBtn = document.getElementById('runBtn');
 const clearBtn = document.getElementById('clearBtn');
 const resetBtn = document.getElementById('resetBtn');
 const langStatus = document.getElementById('langStatus');
+const userInfo = document.getElementById('userInfo');
 
-// SAME BUG: Array bounds error (i <= length instead of i < length) - NO COMMENTS
 const challenges = {
     python: `numbers = [1, 2, 3, 4, 5]
 sum_val = 0
@@ -18,8 +17,7 @@ sum_val = 0
 for i in range(len(numbers) + 1):
     sum_val += numbers[i]
 
-print("Sum:", sum_val)
-`,
+print("Sum:", sum_val)`,
 
     c: `#include <stdio.h>
 
@@ -52,7 +50,31 @@ int main() {
 
 let currentLang = 'python';
 
-// Language Switcher
+// Login
+function login() {
+    const teamId = document.getElementById('teamId').value.trim();
+    const regNo = document.getElementById('regNo').value.trim();
+    if (teamId && regNo) {
+        userInfo.textContent = `${teamId}`;
+        showTerminal(teamId, regNo);
+    } else {
+        alert('⚠️ Enter Team ID & Reg No!');
+    }
+}
+
+function demoLogin() {
+    userInfo.textContent = 'DEMO-TEAM';
+    showTerminal('DEMO-001', 'DEMO-REG');
+}
+
+function showTerminal(teamId, regNo) {
+    document.getElementById('loginPage').style.display = 'none';
+    document.getElementById('terminalPage').style.display = 'flex';
+    consoleOutput.innerHTML = `✅ Welcome ${teamId}! Reg: ${regNo}\n🚀 Code Debug Terminal Ready!\nChoose language → Fix array bounds bug → RUN → WIN PRIZES!\n\n`;
+    resetCode();
+}
+
+// Terminal Logic
 langBtns.forEach(btn => {
     btn.addEventListener('click', () => {
         langBtns.forEach(b => b.classList.remove('active'));
@@ -63,22 +85,17 @@ langBtns.forEach(btn => {
     });
 });
 
-// Line Numbers
 codeEditor.addEventListener('input', updateLineNumbers);
 codeEditor.addEventListener('scroll', syncScroll);
-updateLineNumbers();
 
 function updateLineNumbers() {
-    const lines = codeEditor.value.split('\\n').length;
+    const lines = codeEditor.value.split('\n').length;
     lineCount.textContent = `${lines} lines`;
-    lineNumbers.innerHTML = Array.from({length: Math.max(lines, 18)}, (_, i) => i + 1).join('\\n');
+    lineNumbers.innerHTML = Array.from({length: Math.max(lines, 18)}, (_, i) => i + 1).join('\n');
 }
 
-function syncScroll() { 
-    lineNumbers.scrollTop = codeEditor.scrollTop; 
-}
+function syncScroll() { lineNumbers.scrollTop = codeEditor.scrollTop; }
 
-// Core Functions
 runBtn.addEventListener('click', runCode);
 clearBtn.addEventListener('click', clearConsole);
 resetBtn.addEventListener('click', resetCode);
@@ -115,9 +132,7 @@ function checkCorrectLoop(code) {
     }
 }
 
-function clearConsole() { 
-    consoleOutput.innerHTML = ''; 
-}
+function clearConsole() { consoleOutput.innerHTML = ''; }
 
 function resetCode() {
     codeEditor.value = challenges[currentLang];
@@ -127,7 +142,6 @@ function resetCode() {
     runBtn.textContent = '▶️ RUN';
 }
 
-// Keyboard shortcuts
 codeEditor.addEventListener('keydown', (e) => {
     if (e.ctrlKey && e.key === 'Enter') runCode();
     if (e.key === 'Tab') {
@@ -139,8 +153,4 @@ codeEditor.addEventListener('keydown', (e) => {
     }
 });
 
-// Initialize
-window.addEventListener('load', () => {
-    resetCode();
-    consoleOutput.innerHTML = '🚀 Code Debug Terminal Ready!\nChoose language → Fix array bounds bug → RUN → WIN PRIZES!\n\n';
-});
+updateLineNumbers();
