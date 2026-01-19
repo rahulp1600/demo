@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Debug Terminal - College Fest</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="terminal-container">
+        <div class="editor-panel">
+            <div class="panel-header">
+                <div class="lang-selector">
+                    <button class="lang-btn active" data-lang="python">🐍 Python</button>
+                    <button class="lang-btn" data-lang="c">⚡ C</button>
+                    <button class="lang-btn" data-lang="java">☕ Java</button>
+                </div>
+                <div class="header-info">
+                    <span class="status" id="lineCount">15 lines</span>
+                    <span class="status" id="langStatus">Python</span>
+                </div>
+            </div>
+            <div class="editor-container">
+                <div class="line-numbers" id="lineNumbers"></div>
+                <textarea class="code-editor" id="codeEditor" spellcheck="false" wrap="off"></textarea>
+            </div>
+        </div>
+        
+        <div class="console-panel">
+            <div class="panel-header">
+                <span>📱 CONSOLE OUTPUT</span>
+                <span class="status" id="status">Ready</span>
+            </div>
+            <div class="console-output" id="consoleOutput"></div>
+            <div class="controls">
+                <button id="runBtn">▶️ RUN</button>
+                <button id="clearBtn">🗑️ CLEAR</button>
+                <button id="resetBtn">🔄 RESET</button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
