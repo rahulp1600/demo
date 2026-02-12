@@ -1,66 +1,13 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Code Debug Terminal - College Fest</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <!-- LOGIN PAGE -->
-    <div class="login-container" id="loginPage">
-        <div class="login-title">🔧 CODE DEBUG CHALLENGE</div>
-        <div class="login-subtitle">JNTUH College Fest 2026</div>
-        
-        <div class="input-group">
-            <label>Team ID</label>
-            <input type="text" id="teamId" placeholder="TEAM001" maxlength="10">
-        </div>
-        
-        <div class="input-group">
-            <label>College Reg No</label>
-            <input type="text" id="regNo" placeholder="21A31A05XX" maxlength="12">
-        </div>
-        
-        <button class="login-btn" onclick="login()">🚀 ENTER COMPETITION</button>
-        <div class="demo-mode" onclick="demoLogin()">👾 DEMO MODE</div>
-    </div>
-
-    <!-- TERMINAL -->
-    <div class="terminal-container" id="terminalPage">
-        <div class="editor-panel">
-            <div class="panel-header">
-                <div class="lang-selector">
-                    <button class="lang-btn active" data-lang="python">🐍 Python</button>
-                    <button class="lang-btn" data-lang="c">⚡ C</button>
-                    <button class="lang-btn" data-lang="java">☕ Java</button>
-                </div>
-                <div class="header-info">
-                    <span class="status" id="lineCount">10 lines</span>
-                    <span class="status" id="langStatus">PYTHON</span>
-                    <span class="status" id="userInfo"></span>
-                </div>
-            </div>
-            <div class="editor-container">
-                <div class="line-numbers" id="lineNumbers"></div>
-                <textarea class="code-editor" id="codeEditor" spellcheck="false" wrap="off"></textarea>
-            </div>
-        </div>
-        
-        <div class="console-panel">
-            <div class="panel-header">
-                <span>📱 CONSOLE OUTPUT</span>
-                <span class="status" id="status">Ready</span>
-            </div>
-            <div class="console-output" id="consoleOutput"></div>
-            <div class="controls">
-                <button id="runBtn">▶️ RUN</button>
-                <button id="clearBtn">🗑️ CLEAR</button>
-                <button id="resetBtn">🔄 RESET</button>
-            </div>
-        </div>
-    </div>
-
-    <script src="script.js"></script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>orsa</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
 </html>
